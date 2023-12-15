@@ -1,0 +1,48 @@
+import { initializeApp } from 'firebase/app'
+import {
+  getAuth,
+  signInWithRedirect,
+  signInWithPopup,
+  GoogleAuthProvider,
+} from 'firebase/auth'
+import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore'
+
+const firebaseConfig = {
+  apiKey: 'AIzaSyD3dGrsRdzkgzfWJnn9Cmz6YZkn_SRBorA',
+  authDomain: 'crwn-clothing-2a4b8.firebaseapp.com',
+  projectId: 'crwn-clothing-2a4b8',
+  storageBucket: 'crwn-clothing-2a4b8.appspot.com',
+  messagingSenderId: '129352111404',
+  appId: '1:129352111404:web:e0a15da991691ce1e6c889',
+}
+
+const firebaseApp = initializeApp(firebaseConfig)
+
+const provider = new GoogleAuthProvider()
+
+provider.setCustomParameters({
+  prompt: 'select_account',
+})
+
+export const auth = getAuth()
+export const signInWithGooglePopup = () => signInWithPopup(auth, provider)
+
+export const db = getFirestore()
+
+export const createUserDocumentFromAuth = async userAuth => {
+  const userDocRef = doc(db, 'users', userAuth.uid)
+  const userSnapshot = await getDoc(userDocRef)
+
+  if (!userSnapshot.exists()) {
+    const { displayName, email } = userAuth
+    const createdAt = new Date()
+
+    try {
+      await setDoc(userDocRef, { displayName, email, createdAt })
+    } catch (error) {
+      console.log('error creating the user', error.message)
+    }
+  }
+
+  return userDocRef
+}

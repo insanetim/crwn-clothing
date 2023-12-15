@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom'
 
 import Navigation from './routes/Navigation'
 import Home from './routes/Home'
+import SignIn from './routes/SignIn'
 
 const Shop = () => {
   return <h1>I am the shop page</h1>
@@ -21,6 +22,10 @@ const App = () => {
         <Route
           path='shop'
           element={<Shop />}
+        />
+        <Route
+          path='sign-in'
+          element={<SignIn />}
         />
       </Route>
     </Routes>
