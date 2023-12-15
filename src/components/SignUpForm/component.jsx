@@ -6,8 +6,8 @@ import {
 } from '../../utils/firebase'
 
 import FormInput from '../FormInput'
-import './styles.scss'
 import Button from '../Button'
+import './styles.scss'
 
 const defaultFormFields = {
   displayName: '',
