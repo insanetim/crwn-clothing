@@ -16,21 +16,50 @@ const addCartItem = (cartItems, productToAdd) => {
   return [...cartItems, { ...productToAdd, quantity: 1 }]
 }
 
+const removeCartItem = (cartItems, cartItemToRemove) => {
+  const existingCartItem = cartItems.find(
+    cartItem => cartItem.id === cartItemToRemove.id
+  )
+
+  if (existingCartItem.quantity === 1) {
+    return cartItems.filter(cartItem => cartItem.id !== cartItemToRemove.id)
+  }
+
+  return cartItems.map(cartItem =>
+    cartItem.id === cartItemToRemove.id
+      ? { ...cartItem, quantity: cartItem.quantity - 1 }
+      : cartItem
+  )
+}
+
+const clearCartItem = (cartItems, cartItemToClear) => {
+  return cartItems.filter(cartItem => cartItem.id !== cartItemToClear.id)
+}
+
 export const CartContext = createContext({
   isCartOpen: false,
   setIsCartOpen: () => {},
   cartItems: [],
+  cartCount: 0,
+  cartTotal: 0,
   addItemToCart: () => {},
-  cartItemCount: 0,
+  removeItemFromCart: () => {},
+  clearItemFromCart: () => {},
 })
 
 export const CartProvider = ({ children }) => {
   const [isCartOpen, setIsCartOpen] = useState(false)
   const [cartItems, setCartItems] = useState([])
 
-  const cartItemCount = useMemo(() => {
+  const cartCount = useMemo(() => {
     return cartItems.reduce((total, cartItem) => {
       return total + cartItem.quantity
+    }, 0)
+  }, [cartItems])
+
+  const cartTotal = useMemo(() => {
+    return cartItems.reduce((total, cartItem) => {
+      return total + cartItem.quantity * cartItem.price
     }, 0)
   }, [cartItems])
 
@@ -38,12 +67,23 @@ export const CartProvider = ({ children }) => {
     setCartItems(addCartItem(cartItems, productToAdd))
   }
 
+  const removeItemFromCart = cartItemToRemove => {
+    setCartItems(removeCartItem(cartItems, cartItemToRemove))
+  }
+
+  const clearItemFromCart = cartItemToClear => {
+    setCartItems(clearCartItem(cartItems, cartItemToClear))
+  }
+
   const value = {
     isCartOpen,
     setIsCartOpen,
     cartItems,
+    cartCount,
+    cartTotal,
     addItemToCart,
-    cartItemCount,
+    removeItemFromCart,
+    clearItemFromCart,
   }
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>
