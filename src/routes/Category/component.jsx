@@ -1,17 +1,17 @@
-import { useContext, useMemo } from 'react'
+import { useMemo } from 'react'
+import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
-import { CategoriesContext } from 'src/contexts/categories.context'
+import { selectCategoriesMap } from 'src/store/categories/selectors'
 import ProductCard from 'src/components/ProductCard'
 import { CategoryContainer, CategoryTitle } from './styled'
 
 const Category = () => {
   const { category } = useParams()
-  const { categoriesMap } = useContext(CategoriesContext)
-  const products = useMemo(
-    () => categoriesMap[category],
-    [categoriesMap, category]
-  )
+  const categoriesMap = useSelector(selectCategoriesMap)
+  const products = useMemo(() => {
+    return categoriesMap[category]
+  }, [categoriesMap, category])
 
   return (
     <>
