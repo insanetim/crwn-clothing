@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { Outlet } from 'react-router-dom'
 
+import CrwnLogo from 'src/assets/crown.svg'
+import CartIcon from 'src/components/CartIcon'
+import CartDropdown from 'src/components/CartDropdown'
 import { signOutStart } from 'src/store/user/actions'
 import { selectCurrentUser } from 'src/store/user/selectors'
 import { selectIsCartOpen } from 'src/store/cart/selectors'
-import CartIcon from 'src/components/CartIcon'
-import CartDropdown from 'src/components/CartDropdown'
-import CrwnLogo from 'src/assets/crown.svg'
 import {
   NavigationContainer,
   LogoContainer,

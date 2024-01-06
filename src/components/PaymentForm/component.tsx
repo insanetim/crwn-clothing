@@ -3,9 +3,9 @@ import { useSelector } from 'react-redux'
 import { StripeCardElement } from '@stripe/stripe-js'
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js'
 
+import { BUTTON_TYPE_CLASSES } from '../Button'
 import { selectCartTotal } from 'src/store/cart/selectors'
 import { selectCurrentUser } from 'src/store/user/selectors'
-import { BUTTON_TYPE_CLASSES } from '../Button'
 import { PaymentFormContainer, FormContainer, PaymentButton } from './styled'
 
 const isValidCardElement = (

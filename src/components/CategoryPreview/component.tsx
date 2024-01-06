@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
-import { CategoryItem } from 'src/store/categories/types'
 import ProductCard from '../ProductCard'
+import { CategoryItem } from 'src/store/categories/types'
 import { CategoryPreviewContainer, Title, Preview } from './styled'
 
 type CategoryPreviewProps = {

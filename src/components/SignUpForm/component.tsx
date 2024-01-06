@@ -1,11 +1,11 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { AuthError, AuthErrorCodes } from 'firebase/auth'
 
-import { signUpStart } from 'src/store/user/actions'
 import FormInput from '../FormInput'
 import Button from '../Button'
+import { signUpStart } from 'src/store/user/actions'
 import { SignUpContainer } from './styled'
-import { AuthError, AuthErrorCodes } from 'firebase/auth'
 
 const defaultFormFields = {
   displayName: '',
@@ -44,7 +44,7 @@ const SignUpForm = () => {
       if (
         (error as AuthError).code === AuthErrorCodes.CREDENTIAL_ALREADY_IN_USE
       ) {
-        console.log('Cannot create user< email already in use')
+        console.log('Cannot create user, email already in use')
       }
       console.log('user creation encountered an error', error)
     }

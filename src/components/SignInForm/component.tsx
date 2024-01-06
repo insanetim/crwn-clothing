@@ -1,9 +1,9 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { useDispatch } from 'react-redux'
 
-import { googleSignInStart, emailSignInStart } from 'src/store/user/actions'
 import FormInput from '../FormInput'
 import Button, { BUTTON_TYPE_CLASSES } from '../Button'
+import { googleSignInStart, emailSignInStart } from 'src/store/user/actions'
 import { SignInContainer, Buttons } from './styled'
 
 const defaultFormFields = {

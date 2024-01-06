@@ -2,12 +2,12 @@ import { useMemo } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
+import Spinner from 'src/components/Spinner'
+import ProductCard from 'src/components/ProductCard'
 import {
   selectCategoriesIsLoading,
   selectCategoriesMap,
 } from 'src/store/categories/selectors'
-import Spinner from 'src/components/Spinner'
-import ProductCard from 'src/components/ProductCard'
 import { CategoryContainer, Title } from './styled'
 
 type CategoryRouteParams = {

@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux'
 
+import Button, { BUTTON_TYPE_CLASSES } from '../Button'
 import { CategoryItem } from 'src/store/categories/types'
 import { addItemToCart } from 'src/store/cart/actions'
 import { selectCartItems } from 'src/store/cart/selectors'
-import Button, { BUTTON_TYPE_CLASSES } from '../Button'
 import { ProductCardContainer, Footer } from './styled'
 
 type ProductCardProps = {
