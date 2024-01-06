@@ -7,6 +7,7 @@ import { Elements } from '@stripe/react-stripe-js'
 import App from './App'
 import { store, persistor } from './store'
 import { stripePromise } from './utils/stripe'
+import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 
 const container = document.getElementById('root') as HTMLElement
 const root = createRoot(container)
@@ -24,3 +25,5 @@ root.render(
     </PersistGate>
   </Provider>
 )
+
+serviceWorkerRegistration.register()
