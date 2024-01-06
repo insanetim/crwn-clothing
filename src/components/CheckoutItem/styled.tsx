@@ -18,19 +18,37 @@ export const ImageContainer = styled.div`
     width: 100%;
     height: 100%;
   }
+
+  @media screen and (max-width: 800px) {
+    width: 22%;
+    padding-right: 10px;
+  }
 `
 
 export const Name = styled.span`
   width: 23%;
+
+  @media screen and (max-width: 800px) {
+    width: 22%;
+    padding-right: 10px;
+  }
 `
 
 export const Quantity = styled.span`
   display: flex;
   width: 23%;
+
+  @media screen and (max-width: 800px) {
+    width: 22%;
+  }
 `
 
 export const Price = styled.span`
   width: 23%;
+
+  @media screen and (max-width: 800px) {
+    width: 22%;
+  }
 `
 
 export const Arrow = styled.span`

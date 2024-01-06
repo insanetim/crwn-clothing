@@ -26,23 +26,37 @@ export const ProductCardContainer = styled.div`
   ${BaseButton},
   ${GoogleSignInButton},
   ${InvertedButton} {
-    width: 80%;
-    opacity: 0.7;
+    display: flex;
     position: absolute;
     top: 255px;
-    display: none;
+    width: 80%;
+    opacity: 0.9;
+
+    @media screen and (max-width: 800px) {
+      min-width: unset;
+      padding: 0 10px;
+    }
   }
 
-  &:hover {
-    img {
-      opacity: 0.8;
-    }
-
+  @media screen and (hover: hover) {
     ${BaseButton},
     ${GoogleSignInButton},
     ${InvertedButton} {
-      opacity: 0.85;
-      display: flex;
+      opacity: 0.7;
+      display: none;
+    }
+
+    &:hover {
+      img {
+        opacity: 0.8;
+      }
+
+      ${BaseButton},
+      ${GoogleSignInButton},
+      ${InvertedButton} {
+        opacity: 0.85;
+        display: flex;
+      }
     }
   }
 `

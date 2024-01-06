@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom'
 
 import Spinner from './components/Spinner'
 import { checkUserSession } from './store/user/actions'
+import { GlobalStyle } from './global.styles'
 
 const Navigation = lazy(() => import('./routes/Navigation'))
 const Home = lazy(() => import('./routes/Home'))
@@ -20,6 +21,7 @@ const App = () => {
 
   return (
     <Suspense fallback={<Spinner />}>
+      <GlobalStyle />
       <Routes>
         <Route
           path='/'
