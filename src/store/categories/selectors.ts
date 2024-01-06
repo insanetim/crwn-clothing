@@ -7,7 +7,7 @@ import { CategoryMap } from './types'
 const selectCategoriesReducer = (state: RootState): CategoriesState =>
   state.categories
 
-const selectCategories = createSelector(
+export const selectCategories = createSelector(
   [selectCategoriesReducer],
   categoriesSlice => categoriesSlice.categories
 )

@@ -11,7 +11,7 @@
   "dependencies": {
     "@stripe/react-stripe-js": "^2.4.0",
     "@stripe/stripe-js": "^2.2.2",
-    "@testing-library/jest-dom": "^6.1.5",
+    "@testing-library/jest-dom": "^6.2.0",
     "@testing-library/react": "^14.1.2",
     "@testing-library/user-event": "^14.5.1",
     "@types/jest": "^29.5.11",
@@ -29,6 +29,7 @@
     "redux": "^5.0.0",
     "redux-persist": "^6.0.0",
     "redux-saga": "^1.2.3",
+    "redux-saga-test-plan": "^4.0.6",
     "reselect": "^5.0.1",
     "sass": "^1.69.5",
     "stripe": "^14.10.0",
